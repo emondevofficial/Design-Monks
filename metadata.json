@@ -1,0 +1,6 @@
+{
+  "name": "Design Monks",
+  "description": "Design Monks is a UI/UX and product design agency helping startups, SaaS and enterprise brands grow with research-led design.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

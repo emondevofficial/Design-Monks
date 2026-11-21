@@ -1,0 +1,241 @@
+@import "tailwindcss";
+
+@property --_gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@layer base {
+  :root {
+    --dm-primary-50: #eff6ff;
+    --dm-primary-100: #d7c4ff;
+    --dm-primary-200: #c3a7ff;
+    --dm-primary-300: #a87fff;
+    --dm-primary-400: #9766ff;
+    --dm-primary-500: #7d40ff;
+    --dm-primary-600: #723ae8;
+    --dm-primary-700: #592db5;
+    --dm-primary-800: #45238c;
+    --dm-primary-900: #351b6b;
+    --dm-primary-950: #241249;
+
+    --dm-secondary-50: #eafff4;
+    --dm-secondary-100: #befddd;
+    --dm-secondary-500: #2cfa92;
+    --dm-secondary-600: #28e485;
+    --dm-secondary-700: #1fb268;
+    --dm-secondary-800: #188a50;
+    --dm-secondary-900: #12693d;
+
+    --dm-neutral-0: #ffffff;
+    --dm-neutral-50: #fafafa;
+    --dm-neutral-100: #f5f5f5;
+    --dm-neutral-200: #e5e5e5;
+    --dm-neutral-300: #d4d4d4;
+    --dm-neutral-400: #a3a3a3;
+    --dm-neutral-500: #737373;
+    --dm-neutral-600: #525252;
+    --dm-neutral-700: #404040;
+    --dm-neutral-800: #262626;
+    --dm-neutral-900: #171717;
+    --dm-neutral-950: #0a0a0a;
+
+    --font-title: "Red Hat Display", "Outfit", sans-serif;
+    --font-body: "Outfit", sans-serif;
+    --font-serif-italic: "Playfair Display", Georgia, serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-body);
+    background-color: #fafafa;
+    color: #0a0a0a;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    overflow-x: clip;
+  }
+}
+
+.font-title {
+  font-family: var(--font-title);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-playfair-em {
+  font-family: var(--font-serif-italic);
+  font-style: italic;
+  font-weight: 700;
+}
+
+/* Heading em styling matching Design Monks */
+.dm-heading em,
+.dm-heading .brand-em {
+  font-family: var(--font-serif-italic);
+  font-style: italic;
+  font-weight: 700;
+}
+
+/* Conic gradient border rotation for signature Design Monks CTA buttons */
+@keyframes dm-gradient-angle-rotate {
+  0% {
+    --_gradient-angle: 0deg;
+  }
+  100% {
+    --_gradient-angle: 360deg;
+  }
+}
+
+.dm-nav-btn-border {
+  background: conic-gradient(
+      from var(--_gradient-angle) at 50% 50%,
+      #fbfaf6 0deg,
+      rgba(251, 250, 246, 0) 140deg,
+      rgba(251, 250, 246, 0) 260deg,
+      #fbfaf6 360deg
+    ),
+    #7d40ff;
+  animation: dm-gradient-angle-rotate 3s linear infinite;
+}
+
+.dm-primary-btn {
+  background-image: linear-gradient(180deg, #592db5 25%, #7d40ff 100%);
+  box-shadow: inset 0 1.6px 3px rgba(255, 255, 255, 0.72), 0 10px 28px rgba(125, 64, 255, 0.28);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.dm-primary-btn:hover {
+  filter: brightness(1.08);
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.85), 0 14px 36px rgba(125, 64, 255, 0.44);
+  transform: translateY(-1px);
+}
+
+.dm-primary-btn:active {
+  transform: translateY(0);
+}
+
+/* Marquee animations */
+@keyframes dm-marquee-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes dm-marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-dm-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: dm-marquee-left 45s linear infinite;
+}
+
+.animate-dm-marquee-left-slow {
+  display: flex;
+  width: max-content;
+  animation: dm-marquee-left 75s linear infinite;
+}
+
+.animate-dm-marquee-right-slow {
+  display: flex;
+  width: max-content;
+  animation: dm-marquee-right 75s linear infinite;
+}
+
+.animate-dm-marquee-fast {
+  display: flex;
+  width: max-content;
+  animation: dm-marquee-left 28s linear infinite;
+}
+
+.hover-pause:hover .animate-dm-marquee-left,
+.hover-pause:hover .animate-dm-marquee-left-slow,
+.hover-pause:hover .animate-dm-marquee-right-slow,
+.hover-pause:hover .animate-dm-marquee-fast {
+  animation-play-state: paused;
+}
+
+/* Section Tag Chip */
+.dm-section-tag-light {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #28e485;
+  color: #188a50;
+  background-color: #ffffff;
+  border-radius: 1.5rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.dm-section-tag-dark {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #12693d;
+  color: #1fb268;
+  background-color: rgba(22, 255, 133, 0.09);
+  border-radius: 1.5rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+/* Comparison gradient border */
+.dm-comparison-wrapper {
+  background-image: linear-gradient(183deg, #ebf8fc, #7fb8ef 30%, #5142f1 62%, #1d1d29);
+  border-radius: 2rem;
+  padding: 1.5px;
+}
+
+/* Career item gradient border + glow */
+.dm-career-card-outer {
+  background-image: linear-gradient(28.96deg, rgba(235, 248, 252, 0.5), rgba(127, 184, 239, 0.5) 30%, rgba(81, 66, 241, 0.5) 58%, rgba(29, 29, 41, 0.5));
+  border-radius: 2rem;
+  padding: 1.5px;
+  box-shadow: 0 16px 5px rgba(0, 0, 0, 0.2), inset 0 8px 24px rgba(255, 255, 255, 0.09);
+  transition: box-shadow 0.35s ease, background-image 0.35s ease, transform 0.25s ease;
+}
+
+.dm-career-card-outer:hover {
+  background-image: linear-gradient(#8820ff, #8f8c8c 94%);
+  box-shadow: 0 -8px 50px 9px #592db5, inset 0 20px 50px 9px #7d40ff;
+}
+
+/* Hide scrollbars cleanly */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-dm-marquee-left,
+  .animate-dm-marquee-left-slow,
+  .animate-dm-marquee-right-slow,
+  .animate-dm-marquee-fast,
+  .dm-nav-btn-border {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
